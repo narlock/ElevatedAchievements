@@ -1,0 +1,29 @@
+name: ElevatedAchievements
+main: com.narlock.achievements.ElevatedAchievements
+version: 1.0
+author: narlock
+description: Add persistent achievements.
+
+commands:
+  playtime:
+    description: View user playtime on the server.
+    usage: /playtime
+    permission: elevatedachievements.playtime
+  playtimetop:
+    description: View leaderboard for playtime.
+    usage: /playtimetop
+    permission: elevatedachievements.playtimetop
+  reloadea:
+    description: Reload the ElevatedAchievements plugin configuration.
+    permissions: elevatedachievements.reload
+
+permissions:
+  elevatedachievements.playtime:
+    description: Allows the player to use the /playtime command.
+    default: true
+  elevatedachievements.playtimetop:
+    description: Allows the player to use the /playtimetop command.
+    default: true
+  elevatedachievements.reload:
+    description: Allows the player to reload the plugin configuration.
+    default: op
