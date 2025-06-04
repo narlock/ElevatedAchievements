@@ -33,8 +33,47 @@ While there is an achievements map in Minecraft Beta 1.7.3, there is a small amo
 > [!WARNING]
 > Feature details are currently unavailable!
 
+Achievements are stored using sqlite. The following is the relational database schmea for ElevatedAchievements:
+```mermaid
+erDiagram
+    players {
+        TEXT username PK
+    }
+    achievements {
+        INTEGER id PK
+        TEXT title
+        TEXT description
+        INTEGER tier
+        TEXT type
+    }
+    player_achievements {
+        TEXT username FK
+        INTEGER achievement_id FK
+        DATETIME completed_at
+    }
+
+    players ||--o{ player_achievements : has
+    achievements ||--o{ player_achievements : awarded
+
+    %% Table coloring
+    class players table-green
+    class achievements table-blue
+    class player_achievements table-orange
+
+    %% Custom styles
+    classDef table-green fill:#d4edda,stroke:#155724,color:#155724;
+    classDef table-blue fill:#cce5ff,stroke:#004085,color:#004085;
+    classDef table-orange fill:#fff3cd,stroke:#856404,color:#856404;
+```
+
 #### Earning Achievements
 The plugin will listen to different events on the server and perform checks against the statistics of the player. When the player passes the requirements for the achievement, a message will be sent to them that they have earned the achievement, and the achievement will persist on the server.
+
+#### Achievement Messages
+Server admins can enable achievement messages to be displayed on the server, similar to modern versions of Minecraft.
+
+> [!WARNING]
+> Example screenshot of an achievement message is unavailable!
 
 ### Play Time
 
